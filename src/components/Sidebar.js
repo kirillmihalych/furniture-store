@@ -3,14 +3,21 @@ import { Link } from 'react-router-dom'
 import { links } from '../utils/constants'
 import { FaBars } from '../assets/icons'
 import ButtonsContainer from './ButtonsContainer'
+import { useDispatch, useSelector } from 'react-redux'
+import { closeSidebar } from '../features/productSlice'
 
 const Sidebar = () => {
+  const dispatch = useDispatch()
+  const { isSidebarOpen } = useSelector((state) => state.product)
   return (
     <Wrapper>
-      <aside>
+      <aside className={isSidebarOpen ? 'show-sidebar' : null}>
         <div className='sidebar-title'>
           <h1>furniture</h1>
-          <button className='sidebar-btn'>
+          <button
+            className='sidebar-btn'
+            onClick={() => dispatch(closeSidebar())}
+          >
             <FaBars />
           </button>
         </div>
@@ -45,6 +52,7 @@ const Wrapper = styled.div`
     transition: var(--transition);
   }
   .show-sidebar {
+    transition: var(--transition);
     transform: translateY(0);
   }
   .sidebar-btn {

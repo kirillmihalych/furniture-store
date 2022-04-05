@@ -3,14 +3,23 @@ import { Link } from 'react-router-dom'
 import { links } from '../utils/constants'
 import { FaBars } from '../assets/icons'
 import ButtonsContainer from './ButtonsContainer'
+import { useDispatch } from 'react-redux'
+import { openSidebar } from '../features/productSlice'
 
 const Navbar = () => {
+  const dispatch = useDispatch()
+
   return (
     <Wrapper>
       <nav>
         <div className='nav-title'>
           <h2>furniture</h2>
-          <button className='toggle-btn'>
+          <button
+            className='toggle-btn'
+            onClick={() => {
+              dispatch(openSidebar())
+            }}
+          >
             <FaBars />
           </button>
         </div>
