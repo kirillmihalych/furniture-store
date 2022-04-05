@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { links } from '../utils/constants'
+import { FaBars } from '../assets/icons'
+import ButtonsContainer from './ButtonsContainer'
 
 const Navbar = () => {
   return (
@@ -8,7 +10,9 @@ const Navbar = () => {
       <nav>
         <div className='nav-title'>
           <h2>furniture</h2>
-          <button className='toggle-btn'>toggle</button>
+          <button className='toggle-btn'>
+            <FaBars />
+          </button>
         </div>
         <div className='nav-links'>
           {links.map(({ id, url, name }) => {
@@ -19,10 +23,7 @@ const Navbar = () => {
             )
           })}
         </div>
-        <div className='btn-container'>
-          <button>cart</button>
-          <button>sign up</button>
-        </div>
+        <ButtonsContainer />
       </nav>
     </Wrapper>
   )
@@ -35,6 +36,18 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: var(--shadow);
+  .toggle-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.75rem;
+    display: flex;
+    align-items: center;
+  }
+  .toggle-btn:hover {
+    transition: var(--transiton);
+    color: var(--darkGrey);
+  }
   .nav-links {
     display: none;
   }
@@ -50,7 +63,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
   }
-  @media screen and (min-width: 882px) {
+  @media screen and (min-width: 982px) {
     .toggle-btn {
       display: none;
     }

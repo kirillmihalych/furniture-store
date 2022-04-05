@@ -24,7 +24,7 @@ Variables
   --radius: 0.75rem;
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --max-width: 1170px;
-  --min-width: 95vw;
+  --min-width: 85vw;
 }
 
 /* 
@@ -62,7 +62,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--black);
   letter-spacing: 0.1rem;
   text-transform: capitalize;
@@ -80,7 +80,7 @@ h3 {
   font-size: 1.25rem;
 }
 h4 {
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 p {
