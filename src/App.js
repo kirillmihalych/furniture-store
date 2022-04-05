@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Navbar, Footer } from './components'
+import { Navbar, Footer, Sidebar } from './components'
 import { Home, About, Error, Products, SingleProduct } from './pages'
 
 const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
+      <Sidebar />
       <main className='center'>
         <Routes>
           <Route path='/' element={<Home />} />

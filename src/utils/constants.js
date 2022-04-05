@@ -7,7 +7,7 @@ export const single_product_url =
 export const links = [
   {
     id: 1,
-    url: '/',
+    url: 'products',
     name: 'products',
   },
   {
