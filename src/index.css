@@ -117,3 +117,7 @@ p {
   max-width: var(--max-width);
   margin: 5rem auto;
 }
+
+.center {
+  min-height: calc(100vh - 10rem);
+}
