@@ -3,3 +3,16 @@ export const all_products_url =
 
 export const single_product_url =
   'https://furniture-serverless-func.netlify.app/api/single_product?id='
+
+export const links = [
+  {
+    id: 1,
+    url: '/',
+    name: 'products',
+  },
+  {
+    id: 2,
+    url: 'about',
+    name: 'about',
+  },
+]
