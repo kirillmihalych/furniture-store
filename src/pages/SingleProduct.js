@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleProduct } from '../features/productSlice'
 import { single_product_url } from '../utils/constants'
+import { Stars } from '../components'
 
 const SingleProduct = () => {
   const { single_product } = useSelector((state) => state.product)
-  const { name, img, price, desc, company, category, colors, shipping } =
+  const { name, img, price, desc, company, category, stars, reviews } =
     single_product
+  const { colors = [] } = single_product
   const dispatch = useDispatch()
   const { id } = useParams()
 
@@ -20,6 +22,7 @@ const SingleProduct = () => {
       <section className='single-page-wrapper'>
         <article className='images'>
           <img src={img} alt={name} />
+          <Stars stars={stars} reviews={reviews} />
         </article>
         <article className='info'>
           <h1>{name}</h1>
@@ -52,9 +55,11 @@ const Wrapper = styled.div`
   .single-page-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 5rem;
   }
   img {
-    height: 525px;
+    width: 100%;
+    height: 450px;
     object-fit: cover;
     border: 2px solid var(--denim);
   }
