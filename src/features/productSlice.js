@@ -7,12 +7,21 @@ export const getProducts = createAsyncThunk('getProducts', async () => {
   return response.data
 })
 
+export const getSingleProduct = createAsyncThunk(
+  'getSingleProduct',
+  async (url) => {
+    const response = await axios(url)
+    return response.data
+  }
+)
+
 export const productSlice = createSlice({
   name: 'product',
   initialState: {
     isSidebarOpen: false,
     isLoading: false,
     products: [],
+    single_product: {},
   },
   reducers: {
     openSidebar: (state) => {
@@ -23,6 +32,7 @@ export const productSlice = createSlice({
     },
   },
   extraReducers: {
+    // all products fetching
     [getProducts.pending]: (state) => {
       state.isLoading = true
     },
@@ -31,6 +41,17 @@ export const productSlice = createSlice({
       state.products = action.payload
     },
     [getProducts.rejected]: (state) => {
+      state.isLoading = false
+    },
+    // single products fetching
+    [getSingleProduct.pending]: (state) => {
+      state.isLoading = true
+    },
+    [getSingleProduct.fulfilled]: (state, action) => {
+      state.isLoading = false
+      state.single_product = action.payload
+    },
+    [getSingleProduct.rejected]: (state) => {
       state.isLoading = false
     },
   },

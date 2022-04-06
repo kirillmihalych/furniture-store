@@ -13,11 +13,13 @@ const FeaturedProducts = () => {
             const { price, img, name, id } = product
             return (
               <article key={id} className='product'>
-                <img src={img} alt={name} className='featured-img' />
-                <div className='flex-wrapper'>
-                  <h4>{name}</h4>
-                  <h4>{price}$</h4>
-                </div>
+                <Link to={`products/${id}`}>
+                  <img src={img} alt={name} className='featured-img' />
+                  <div className='flex-wrapper'>
+                    <h4>{name}</h4>
+                    <h4>{price}$</h4>
+                  </div>
+                </Link>
               </article>
             )
           })
