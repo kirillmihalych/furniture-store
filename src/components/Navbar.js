@@ -13,7 +13,10 @@ const Navbar = () => {
     <Wrapper>
       <nav>
         <div className='nav-title'>
-          <h2>furniture</h2>
+          <h2>
+            <Link to='/'>furniture</Link>
+          </h2>
+
           <button
             className='toggle-btn'
             onClick={() => {
@@ -45,6 +48,9 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: var(--shadow);
+  a {
+    color: var(--noxExactlyBlack);
+  }
   .toggle-btn {
     cursor: pointer;
     background: none;

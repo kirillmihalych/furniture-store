@@ -24,7 +24,7 @@ const Sidebar = () => {
         <div className='sidebar-links'>
           {links.map(({ id, url, name }) => {
             return (
-              <Link to={url} key={id}>
+              <Link to={url} key={id} onClick={() => dispatch(closeSidebar())}>
                 {name}
               </Link>
             )
@@ -48,12 +48,13 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transform: translateY(-100%);
+    transform: translate(-100%);
     transition: var(--transition);
+    z-index: -1;
   }
   .show-sidebar {
-    transition: var(--transition);
-    transform: translateY(0);
+    z-index: 999;
+    transform: translate(0);
   }
   .sidebar-btn {
     position: fixed;
@@ -62,6 +63,11 @@ const Wrapper = styled.div`
     font-size: 1.5rem;
     background: transparent;
     border: none;
+  }
+  .sidebar-btn:hover {
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--darkGrey);
   }
   .sidebar-links {
     margin-top: 3rem;

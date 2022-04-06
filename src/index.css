@@ -19,7 +19,7 @@ Variables
   --notExactlyBlack: #201c1c;
 
   /* properties */
-  --transition: all 0.15 linear;
+  --transition: all 0.15s linear;
   --spacing: 0.1rem;
   --radius: 0.75rem;
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -115,9 +115,13 @@ p {
 .section-center {
   width: var(--min-width);
   max-width: var(--max-width);
-  margin: 5rem auto;
+  margin: 0 auto;
 }
 
 .center {
   min-height: calc(100vh - 10rem);
 }
+
+/* .back-image {
+  background-image: url('./assets/img.jpg');
+} */
