@@ -1,9 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { all_products_url as url } from '../utils/constants'
+import axios from 'axios'
+
+export const getProducts = createAsyncThunk('getProducts', async () => {
+  const response = await axios(url)
+  return response.data
+})
 
 export const productSlice = createSlice({
   name: 'product',
   initialState: {
     isSidebarOpen: false,
+    isLoading: false,
+    products: [],
   },
   reducers: {
     openSidebar: (state) => {
@@ -11,6 +20,18 @@ export const productSlice = createSlice({
     },
     closeSidebar: (state) => {
       state.isSidebarOpen = false
+    },
+  },
+  extraReducers: {
+    [getProducts.pending]: (state) => {
+      state.isLoading = true
+    },
+    [getProducts.fulfilled]: (state, action) => {
+      state.isLoading = false
+      state.products = action.payload
+    },
+    [getProducts.rejected]: (state) => {
+      state.isLoading = false
     },
   },
 })

@@ -1,8 +1,17 @@
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { getProducts } from './features/productSlice'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navbar, Footer, Sidebar } from './components'
 import { Home, About, Error, Products, SingleProduct } from './pages'
 
 const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [])
+
   return (
     <BrowserRouter>
       <Navbar />
