@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const About = () => {
   return (
     <Wrapper>
-      <div className='flex-wrapper center section-center'>
+      <div className='flex-wrapper center'>
         <img src={это_мне_надо2} alt='img-about' />
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi
@@ -22,6 +22,7 @@ const About = () => {
 }
 
 const Wrapper = styled.div`
+  margin: 5rem 0;
   .flex-wrapper {
     display: flex;
     justify-content: center;
@@ -53,6 +54,12 @@ const Wrapper = styled.div`
     transition: var(--transition);
     a {
       color: var(--notExactlyWhite);
+    }
+  }
+  @media screen and (min-width: 992px) {
+    img {
+      width: 50%;
+      height: 50%;
     }
   }
 `

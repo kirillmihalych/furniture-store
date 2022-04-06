@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import img from '../assets/img.jpg'
 import { Link } from 'react-router-dom'
-import { FeaturedProducts } from '../components'
+import { FeaturedProducts, Services, NewsForm } from '../components'
 
 const Home = () => {
   return (
@@ -15,15 +15,19 @@ const Home = () => {
           width: '100%',
         }}
       >
-        <h2>
+        <h2 className='home-title'>
           Build your
           <br /> comfort zone
         </h2>
         <h3 className='shopping-btn'>
-          <Link to='products'>start shopping</Link>
+          <Link to='products' className='home-link'>
+            start shopping
+          </Link>
         </h3>
       </div>
       <FeaturedProducts />
+      <Services />
+      <NewsForm />
     </Wrapper>
   )
 }
@@ -35,10 +39,10 @@ const Wrapper = styled.div`
     align-items: center;
     flex-direction: column;
   }
-  a {
+  .home-link {
     color: var(--notExactlyWhite);
   }
-  h2 {
+  .home-title {
     text-align: center;
     color: var(--notExactlyWhite);
   }
