@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 import img from '../assets/img.jpg'
 import { Link } from 'react-router-dom'
+import { FeaturedProducts } from '../components'
 
 const Home = () => {
   return (
     <Wrapper>
       <div
-        className='center'
+        className='center home'
         style={{
           backgroundImage: `url(${img})`,
           backgroundRepeat: 'no-repeat cover',
@@ -18,16 +19,17 @@ const Home = () => {
           Build your
           <br /> comfort zone
         </h2>
-        <h3>
+        <h3 className='shopping-btn'>
           <Link to='products'>start shopping</Link>
         </h3>
       </div>
+      <FeaturedProducts />
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  div {
+  .home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,12 +42,12 @@ const Wrapper = styled.div`
     text-align: center;
     color: var(--notExactlyWhite);
   }
-  h3 {
+  .shopping-btn {
     border: 2px solid var(--notExactlyWhite);
     margin-top: 2rem;
     padding: 1rem 2rem;
   }
-  h3:hover {
+  .shopping-btn:hover {
     cursor: pointer;
     background: black;
     transition: var(--transition);

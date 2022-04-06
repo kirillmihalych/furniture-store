@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { openSidebar } from '../features/productSlice'
 
 const Navbar = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch((state) => state.product)
 
   return (
     <Wrapper>
