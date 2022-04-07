@@ -1,5 +1,31 @@
+import styled from 'styled-components'
+import { ProductList, Filters } from '../components'
+
 const Products = () => {
-  return <div>Products</div>
+  return (
+    <Wrapper className='section-center'>
+      <section className='products-page'>
+        <Filters />
+        <div>
+          {/* <Sort /> */}
+          <ProductList />
+        </div>
+      </section>
+    </Wrapper>
+  )
 }
+
+const Wrapper = styled.div`
+  margin: 5rem auto;
+  .products-page {
+    display: grid;
+    grid-template-columns: 200px auto;
+  }
+  @media screen and (max-width: 767px) {
+    .products-page {
+      grid-template-columns: 1fr;
+    }
+  }
+`
 
 export default Products

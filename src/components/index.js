@@ -7,6 +7,11 @@ import NewsForm from './NewsForm'
 import Stars from './Stars'
 import AddToCart from './AddToCart'
 import AmountBtns from './AmountButtons'
+import ProductList from './ProductList'
+import Product from './Product'
+import GridView from './GridView'
+import Filters from './Filters'
+import ListView from './ListView'
 
 export {
   Footer,
@@ -18,4 +23,9 @@ export {
   Stars,
   AddToCart,
   AmountBtns,
+  ProductList,
+  Product,
+  GridView,
+  Filters,
+  ListView,
 }

@@ -30,13 +30,28 @@ const AddToCart = ({ product }) => {
           })}
         </div>
         <AmountBtns stock={stock} />
-        <Link to='/'>add to cart</Link>
+        <Link to='/' className='link'>
+          add to cart
+        </Link>
       </section>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
+  .link {
+    color: var(--black);
+    background: var(--white);
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    text-transform: capitalize;
+    border: 3px solid var(--black);
+  }
+  .link:hover {
+    transition: var(--transition);
+
+    background: var(--darkGrey);
+  }
   .add-to-cart {
     display: grid;
     place-items: center;
