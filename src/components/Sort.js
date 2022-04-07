@@ -1,10 +1,16 @@
 import styled from 'styled-components'
 import { BsGridFill, BsList } from '../assets/icons'
-import { useDispatch } from 'react-redux'
-import { setGridView, setListView } from '../features/filterSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { setGridView, setListView, setSort } from '../features/filterSlice'
 
 const Sort = () => {
   const dispatch = useDispatch()
+
+  const updateSort = (e) => {
+    let value = e.target.value
+
+    dispatch(setSort({ value }))
+  }
 
   return (
     <Wrapper>
@@ -24,10 +30,18 @@ const Sort = () => {
         <form className='sort-form'>
           <label htmlFor='sort'>Sort by</label>
           <select name='sort'>
-            <option value=''>A to Z</option>
-            <option value=''>Z to A</option>
-            <option value=''>Heighest price</option>
-            <option value=''>Lowest price</option>
+            <option value='heighest' onClick={updateSort}>
+              Heighest price
+            </option>
+            <option value='lowest' onClick={updateSort}>
+              Lowest price
+            </option>
+            <option value='a' onClick={updateSort}>
+              A to Z
+            </option>
+            <option value='z' onClick={updateSort}>
+              Z to A
+            </option>
           </select>
         </form>
       </section>

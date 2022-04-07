@@ -1,17 +1,36 @@
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { GridView, ListView } from '../components'
+import { setProducts, sortProducts } from '../features/filterSlice'
 
 const ProductList = () => {
+  const dispatch = useDispatch()
+
   const { products } = useSelector((state) => state.product)
-  const { gridView } = useSelector((state) => state.filter)
+  const { gridView, filtered_products, sort } = useSelector(
+    (state) => state.filter
+  )
+
+  useEffect(() => {
+    dispatch(setProducts(products))
+  }, [products])
+
+  useEffect(() => {
+    dispatch(sortProducts())
+  }, [sort])
+
+  if (filtered_products.length < 1) {
+    return <h2>Error</h2>
+  }
+
   return (
     <Wrapper>
       <section>
         {gridView ? (
-          <GridView products={products} />
+          <GridView products={filtered_products} />
         ) : (
-          <ListView products={products} />
+          <ListView products={filtered_products} />
         )}
       </section>
     </Wrapper>
