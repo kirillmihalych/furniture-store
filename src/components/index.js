@@ -5,5 +5,15 @@ import FeaturedProducts from './FeaturedProducts'
 import Services from './Services'
 import NewsForm from './NewsForm'
 import Stars from './Stars'
+import AddToCart from './AddToCart'
 
-export { Footer, Navbar, Sidebar, FeaturedProducts, Services, NewsForm, Stars }
+export {
+  Footer,
+  Navbar,
+  Sidebar,
+  FeaturedProducts,
+  Services,
+  NewsForm,
+  Stars,
+  AddToCart,
+}

@@ -4,13 +4,12 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleProduct } from '../features/productSlice'
 import { single_product_url } from '../utils/constants'
-import { Stars } from '../components'
+import { Stars, AddToCart } from '../components'
 
 const SingleProduct = () => {
   const { single_product } = useSelector((state) => state.product)
-  const { name, img, price, desc, company, category, stars, reviews } =
+  const { name, img, price, desc, company, category, stars, reviews, stock } =
     single_product
-  const { colors = [] } = single_product
   const dispatch = useDispatch()
   const { id } = useParams()
 
@@ -29,19 +28,13 @@ const SingleProduct = () => {
           <h3>price: {price}$</h3>
           <h3>company: {company}</h3>
           <h3>category: {category}</h3>
-          <h3>colors :</h3>
-          <div className='colors'>
-            {colors.map((color) => {
-              return (
-                <p
-                  className='color'
-                  key={color}
-                  style={{ background: color }}
-                ></p>
-              )
-            })}
-          </div>
           <p className='desc'>{desc}</p>
+          <hr />
+          {stock > 1 ? (
+            <AddToCart product={single_product} />
+          ) : (
+            `this item unavailable`
+          )}
         </article>
       </section>
     </Wrapper>
@@ -63,16 +56,7 @@ const Wrapper = styled.div`
     object-fit: cover;
     border: 2px solid var(--denim);
   }
-  .colors {
-    margin: 1rem 0;
-  }
-  .color {
-    display: inline-block;
-    border: 2px solid black;
-    margin-right: 0.5rem;
-    width: 25px;
-    height: 25px;
-  }
+
   .desc {
     letter-spacing: var(--spacing);
   }
