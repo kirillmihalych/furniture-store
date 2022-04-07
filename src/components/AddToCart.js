@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { FaCheck } from '../assets/icons'
+import AmountBtns from './AmountButtons'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const AddToCart = ({ product }) => {
   const [mainColor, setMainColor] = useState('')
@@ -8,8 +10,9 @@ const AddToCart = ({ product }) => {
 
   return (
     <Wrapper>
-      <section>
+      <section className='add-to-cart'>
         <div className='colors'>
+          <h3 className='colors-title'>colors:</h3>
           {colors.map((color, index) => {
             return (
               <span
@@ -18,6 +21,7 @@ const AddToCart = ({ product }) => {
                 style={{ background: color }}
                 onClick={() => setMainColor(color)}
               >
+                {' '}
                 {mainColor === color ? (
                   <FaCheck className='color_icon' />
                 ) : null}
@@ -25,15 +29,24 @@ const AddToCart = ({ product }) => {
             )
           })}
         </div>
-        <div className='amount-btns'></div>
+        <AmountBtns stock={stock} />
+        <Link to='/'>add to cart</Link>
       </section>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
+  .add-to-cart {
+    display: grid;
+    place-items: center;
+    gap: 2rem;
+  }
+  .colors-title {
+    margin-right: 1rem;
+  }
   .colors {
-    margin: 1rem 0;
+    margin-top: 1rem;
     display: flex;
   }
   .color {

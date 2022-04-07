@@ -6,6 +6,7 @@ import Services from './Services'
 import NewsForm from './NewsForm'
 import Stars from './Stars'
 import AddToCart from './AddToCart'
+import AmountBtns from './AmountButtons'
 
 export {
   Footer,
@@ -16,4 +17,5 @@ export {
   NewsForm,
   Stars,
   AddToCart,
+  AmountBtns,
 }
