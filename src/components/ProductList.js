@@ -4,11 +4,15 @@ import { GridView, ListView } from '../components'
 
 const ProductList = () => {
   const { products } = useSelector((state) => state.product)
+  const { gridView } = useSelector((state) => state.filter)
   return (
     <Wrapper>
       <section>
-        <ListView products={products} />
-        {/* <GridView products={products} /> */}
+        {gridView ? (
+          <GridView products={products} />
+        ) : (
+          <ListView products={products} />
+        )}
       </section>
     </Wrapper>
   )

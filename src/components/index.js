@@ -12,6 +12,7 @@ import Product from './Product'
 import GridView from './GridView'
 import Filters from './Filters'
 import ListView from './ListView'
+import Sort from './Sort'
 
 export {
   Footer,
@@ -28,4 +29,5 @@ export {
   GridView,
   Filters,
   ListView,
+  Sort,
 }

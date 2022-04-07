@@ -5,9 +5,16 @@ export const filterSlice = createSlice({
   initialState: {
     gridView: true,
   },
-  reducers: {},
+  reducers: {
+    setGridView: (state) => {
+      state.gridView = true
+    },
+    setListView: (state) => {
+      state.gridView = false
+    },
+  },
 })
 
-// export const {} = filterSlice.actions
+export const { setGridView, setListView } = filterSlice.actions
 
 export default filterSlice.reducer

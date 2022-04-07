@@ -10,7 +10,13 @@ import {
   FaMinus,
   FaCheck,
 } from 'react-icons/fa'
-import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
+import {
+  BsStarFill,
+  BsStarHalf,
+  BsStar,
+  BsGridFill,
+  BsList,
+} from 'react-icons/bs'
 
 export {
   FaUserAlt,
@@ -26,4 +32,6 @@ export {
   FaPlus,
   FaMinus,
   FaCheck,
+  BsGridFill,
+  BsList,
 }

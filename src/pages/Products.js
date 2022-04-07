@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ProductList, Filters } from '../components'
+import { ProductList, Filters, Sort } from '../components'
 
 const Products = () => {
   return (
@@ -7,7 +7,7 @@ const Products = () => {
       <section className='products-page'>
         <Filters />
         <div>
-          {/* <Sort /> */}
+          <Sort />
           <ProductList />
         </div>
       </section>
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   margin: 5rem auto;
   .products-page {
     display: grid;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 150px auto;
   }
   @media screen and (max-width: 767px) {
     .products-page {
