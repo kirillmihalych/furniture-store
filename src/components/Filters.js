@@ -7,12 +7,15 @@ import { FaCheck } from '../assets/icons'
 const Filters = () => {
   const dispatch = useDispatch()
   const { all_products, filters } = useSelector((state) => state.filter)
-  const { text, category, colors } = filters
+  const { text, category, colors, company } = filters
 
   const updateFilters = (e) => {
     let name = e.target.name
     let value = e.target.value
     if (name === 'category') {
+      value = e.target.textContent
+    }
+    if (name === 'company') {
       value = e.target.textContent
     }
     if (name === 'colors') {
@@ -35,6 +38,7 @@ const Filters = () => {
 
   const uniqueColors = getUniqueValues(all_products, 'colors')
   const categories = getUniqueValues(all_products, 'category')
+  const companies = getUniqueValues(all_products, 'company')
 
   return (
     <Wrapper>
@@ -66,6 +70,23 @@ const Filters = () => {
         })}
       </div>
       {/* end of category */}
+      {/* companies */}
+      <div className='companies'>
+        <h4 className='filters-title'>Companies</h4>
+        {companies.map((currentCompany, index) => {
+          return (
+            <button
+              name='company'
+              className={company === currentCompany ? 'btn active' : 'btn'}
+              key={index}
+              onClick={updateFilters}
+            >
+              {currentCompany}
+            </button>
+          )
+        })}
+      </div>
+      {/* end of companies */}
       {/* colors */}
       <div>
         <h4 className='filters-title'>Colors</h4>
@@ -122,7 +143,7 @@ const Wrapper = styled.div`
     padding: 0.1rem 0.2rem;
     margin-bottom: 0.25rem;
   }
-  .categories button:hover {
+  .btn:hover {
     background: var(--darkGrey);
     transition: var(--transition);
   }
@@ -160,6 +181,13 @@ const Wrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  //companies
+  .companies {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `
 

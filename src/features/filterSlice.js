@@ -12,6 +12,7 @@ export const filterSlice = createSlice({
       text: '',
       category: 'all',
       colors: 'all',
+      company: 'all',
     },
   },
   reducers: {
@@ -61,7 +62,7 @@ export const filterSlice = createSlice({
     },
     filterProducts: (state, action) => {
       let tempProducts = [...state.all_products]
-      const { text, category, colors } = state.filters
+      const { text, category, colors, company } = state.filters
       //search
       if (text) {
         tempProducts = tempProducts.filter((product) => {
@@ -72,6 +73,12 @@ export const filterSlice = createSlice({
       if (category !== 'all') {
         tempProducts = tempProducts.filter(
           (product) => product.category === category
+        )
+      }
+      //comapnies
+      if (company !== 'all') {
+        tempProducts = tempProducts.filter(
+          (product) => product.company === company
         )
       }
       //colors
