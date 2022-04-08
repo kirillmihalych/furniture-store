@@ -20,6 +20,7 @@ const Wrapper = styled.div`
   .products-page {
     display: grid;
     grid-template-columns: 150px auto;
+    column-gap: 2rem;
   }
   @media screen and (max-width: 767px) {
     .products-page {

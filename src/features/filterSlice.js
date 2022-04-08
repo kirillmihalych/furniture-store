@@ -11,6 +11,7 @@ export const filterSlice = createSlice({
     filters: {
       text: '',
       category: 'all',
+      colors: 'all',
     },
   },
   reducers: {
@@ -55,11 +56,12 @@ export const filterSlice = createSlice({
     // filters functional
     setFilter: (state, action) => {
       const { name, value } = action.payload
+      console.log(name, value)
       state.filters[name] = value
     },
     filterProducts: (state, action) => {
       let tempProducts = [...state.all_products]
-      const { text, category } = state.filters
+      const { text, category, colors } = state.filters
       //search
       if (text) {
         tempProducts = tempProducts.filter((product) => {
@@ -71,6 +73,12 @@ export const filterSlice = createSlice({
         tempProducts = tempProducts.filter(
           (product) => product.category === category
         )
+      }
+      //colors
+      if (colors !== 'all') {
+        tempProducts = tempProducts.filter((product) => {
+          return product.colors.find((color) => color === colors)
+        })
       }
       state.filtered_products = tempProducts
     },
