@@ -7,9 +7,12 @@ export const filterSlice = createSlice({
     gridView: true,
     all_products: [],
     filtered_products: [],
-    sort: '',
+    sort: 'lowest',
     filters: {
       text: '',
+      price: 0,
+      min_price: 0,
+      max_price: 0,
       category: 'all',
       colors: 'all',
       company: 'all',
@@ -17,8 +20,16 @@ export const filterSlice = createSlice({
   },
   reducers: {
     setProducts: (state, action) => {
-      state.all_products = action.payload
-      state.filtered_products = action.payload
+      let amountPrice = action.payload.map((product) => {
+        return product.price
+      })
+      let maxPrice = Math.max(...amountPrice)
+      let minPrice = Math.min(...amountPrice)
+      state.filters.max_price = maxPrice
+      state.filters.min_price = minPrice
+      state.filters.price = maxPrice
+      state.all_products = [...action.payload]
+      state.filtered_products = [...action.payload]
     },
     // sort functional
     setGridView: (state) => {
@@ -30,7 +41,6 @@ export const filterSlice = createSlice({
     setSort: (state, action) => {
       const { value } = action.payload
       state.sort = value
-      console.log(state.sort)
     },
     sortProducts: (state) => {
       if (state.sort === 'heighest') {
@@ -62,7 +72,7 @@ export const filterSlice = createSlice({
     },
     filterProducts: (state, action) => {
       let tempProducts = [...state.all_products]
-      const { text, category, colors, company } = state.filters
+      const { text, category, colors, company, price } = state.filters
       //search
       if (text) {
         tempProducts = tempProducts.filter((product) => {
@@ -87,7 +97,19 @@ export const filterSlice = createSlice({
           return product.colors.find((color) => color === colors)
         })
       }
+      // price
+      tempProducts = tempProducts.filter((product) => product.price <= price)
       state.filtered_products = tempProducts
+    },
+    clearFilters: (state) => {
+      state.filters = {
+        ...state.filters,
+        text: '',
+        price: state.filters.max_price,
+        category: 'all',
+        colors: 'all',
+        company: 'all',
+      }
     },
   },
 })
@@ -100,6 +122,7 @@ export const {
   sortProducts,
   setFilter,
   filterProducts,
+  clearFilters,
 } = filterSlice.actions
 
 export default filterSlice.reducer

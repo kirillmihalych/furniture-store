@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { setFilter, filterProducts } from '../features/filterSlice'
+import {
+  setFilter,
+  filterProducts,
+  clearFilters,
+} from '../features/filterSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaCheck } from '../assets/icons'
 
 const Filters = () => {
   const dispatch = useDispatch()
   const { all_products, filters } = useSelector((state) => state.filter)
-  const { text, category, colors, company } = filters
+  const { text, category, colors, company, min_price, max_price, price } =
+    filters
 
   const updateFilters = (e) => {
     let name = e.target.name
@@ -123,6 +128,22 @@ const Filters = () => {
         </div>
       </div>
       {/* end of colors */}
+      {/* price */}
+      <div>
+        <h4 className='filters-title'>{price}$</h4>
+        <form>
+          <input
+            name='price'
+            type='range'
+            min={min_price}
+            max={max_price}
+            value={price}
+            onChange={updateFilters}
+          />
+        </form>
+      </div>
+      {/* end of price */}
+      <button onClick={() => dispatch(clearFilters())}>clear filters</button>
     </Wrapper>
   )
 }
