@@ -8,12 +8,17 @@ export const filterSlice = createSlice({
     all_products: [],
     filtered_products: [],
     sort: '',
+    filters: {
+      text: '',
+      category: 'all',
+    },
   },
   reducers: {
     setProducts: (state, action) => {
       state.all_products = action.payload
       state.filtered_products = action.payload
     },
+    // sort functional
     setGridView: (state) => {
       state.gridView = true
     },
@@ -47,10 +52,39 @@ export const filterSlice = createSlice({
         })
       }
     },
+    // filters functional
+    setFilter: (state, action) => {
+      const { name, value } = action.payload
+      state.filters[name] = value
+    },
+    filterProducts: (state, action) => {
+      let tempProducts = [...state.all_products]
+      const { text, category } = state.filters
+      //search
+      if (text) {
+        tempProducts = tempProducts.filter((product) => {
+          return product.name.toLowerCase().startsWith(text)
+        })
+      }
+      //categories
+      if (category !== 'all') {
+        tempProducts = tempProducts.filter(
+          (product) => product.category === category
+        )
+      }
+      state.filtered_products = tempProducts
+    },
   },
 })
 
-export const { setGridView, setListView, setProducts, setSort, sortProducts } =
-  filterSlice.actions
+export const {
+  setGridView,
+  setListView,
+  setProducts,
+  setSort,
+  sortProducts,
+  setFilter,
+  filterProducts,
+} = filterSlice.actions
 
 export default filterSlice.reducer
