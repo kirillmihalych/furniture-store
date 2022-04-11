@@ -15,6 +15,8 @@ import ListView from './ListView'
 import Sort from './Sort'
 import CartColumns from './CartColumns'
 import LoadingSpinner from './LoadingSpinner'
+import CartItem from './CartItem'
+import CartTotals from './CartTotals'
 
 export {
   Footer,
@@ -34,4 +36,6 @@ export {
   Sort,
   LoadingSpinner,
   CartColumns,
+  CartItem,
+  CartTotals,
 }

@@ -9,6 +9,7 @@ import {
   FaPlus,
   FaMinus,
   FaCheck,
+  FaTrash,
 } from 'react-icons/fa'
 import {
   BsStarFill,
@@ -34,4 +35,5 @@ export {
   FaCheck,
   BsGridFill,
   BsList,
+  FaTrash,
 }

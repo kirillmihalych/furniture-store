@@ -42,7 +42,7 @@ export const cartSlice = createSlice({
           name: product.name,
           color: mainColor,
           amount,
-          image: product.url,
+          img: product.img,
           price: product.price,
           max: product.stock,
         }
@@ -51,9 +51,12 @@ export const cartSlice = createSlice({
         localStorage.setItem('cart', JSON.stringify(state.cart))
       }
     },
+    clearCart: (state) => {
+      state.cart = []
+    },
   },
 })
 
-export const { addToCart } = cartSlice.actions
+export const { addToCart, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer
