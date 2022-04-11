@@ -1,12 +1,17 @@
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { CartColumns, CartItem, CartTotals } from '../components'
 import { useSelector, useDispatch } from 'react-redux'
-import { clearCart } from '../features/cartSlice'
+import { clearCart, countCartTotals } from '../features/cartSlice'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const dispatch = useDispatch()
   const { cart } = useSelector((state) => state.cart)
+
+  useEffect(() => {
+    dispatch(countCartTotals())
+  }, [cart])
 
   return (
     <Wrapper className='section-center'>
@@ -32,7 +37,7 @@ const Cart = () => {
 }
 
 const Wrapper = styled.div`
-  margin-top: 5rem;
+  padding: 5rem 0;
   .link-container {
     display: flex;
     justify-content: space-between;

@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 
 const CartTotals = () => {
+  const { total_amount, shipping_fee } = useSelector((state) => state.cart)
+
   return (
     <Wrapper>
       <div>
         <article>
           <h5>
-            subtotal : <span>500$</span>
+            subtotal : <span>{total_amount / 100}$</span>
           </h5>
           <p>
-            shipping fee : <span>322$</span>
+            shipping fee : <span>{shipping_fee / 100}$</span>
           </p>
           <hr />
           <h4>
-            order total : <span>10000$</span>
+            order total : <span>{(total_amount + shipping_fee) / 100}$</span>
           </h4>
         </article>
 

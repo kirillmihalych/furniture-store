@@ -1,8 +1,21 @@
 import styled from 'styled-components'
 import { FaTrash } from '../assets/icons'
 import { AmountBtns } from '../components'
+import { removeItem, toggleAmount } from '../features/cartSlice'
+import { useDispatch } from 'react-redux'
 
 const CartItem = ({ id, img, name, color, price, amount }) => {
+  const dispatch = useDispatch()
+  let value
+  const increase = () => {
+    value = 'inc'
+    dispatch(toggleAmount({ id, value }))
+  }
+  const decrease = () => {
+    value = 'dec'
+    dispatch(toggleAmount({ id, value }))
+  }
+
   return (
     <Wrapper>
       <div className='title'>
@@ -16,9 +29,9 @@ const CartItem = ({ id, img, name, color, price, amount }) => {
         </div>
       </div>
       <h5 className='price'>{price / 100}$</h5>
-      <AmountBtns amount={amount} />
+      <AmountBtns amount={amount} increase={increase} decrease={decrease} />
       <h5 className='subtotal'>{(price / 100) * amount}$</h5>
-      <button className='remove-btn'>
+      <button className='remove-btn' onClick={() => dispatch(removeItem(id))}>
         <FaTrash />
       </button>
     </Wrapper>
@@ -89,7 +102,7 @@ const Wrapper = styled.div`
   }
   .remove-btn {
     color: var(--red);
-    background: transparent;
+    background: var(--black);
     border: transparent;
     letter-spacing: var(--spacing);
     width: 2rem;
@@ -103,6 +116,10 @@ const Wrapper = styled.div`
     svg {
       font-size: 1.25rem;
     }
+  }
+  .remove-btn:hover {
+    transition: var(--transition);
+    color: lightpink;
   }
   @media (min-width: 776px) {
     .subtotal {
