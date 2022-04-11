@@ -13,6 +13,7 @@ import GridView from './GridView'
 import Filters from './Filters'
 import ListView from './ListView'
 import Sort from './Sort'
+import CartColumns from './CartColumns'
 import LoadingSpinner from './LoadingSpinner'
 
 export {
@@ -32,4 +33,5 @@ export {
   ListView,
   Sort,
   LoadingSpinner,
+  CartColumns,
 }

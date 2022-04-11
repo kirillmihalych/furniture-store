@@ -3,10 +3,35 @@ import { FaCheck } from '../assets/icons'
 import AmountBtns from './AmountButtons'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../features/cartSlice'
 
 const AddToCart = ({ product }) => {
-  const [mainColor, setMainColor] = useState('')
-  const { colors = [], stock } = product
+  const dispatch = useDispatch()
+
+  const { colors = [], stock, id } = product
+  const [mainColor, setMainColor] = useState(colors[0])
+  const [amount, setAmount] = useState(1)
+
+  const increase = () => {
+    setAmount((oldValue) => {
+      let newValue = oldValue + 1
+      if (newValue > stock) {
+        newValue = stock
+      }
+      return newValue
+    })
+  }
+
+  const decrease = () => {
+    setAmount((oldValue) => {
+      let newValue = oldValue - 1
+      if (newValue < 1) {
+        newValue = 1
+      }
+      return newValue
+    })
+  }
 
   return (
     <Wrapper>
@@ -21,7 +46,6 @@ const AddToCart = ({ product }) => {
                 style={{ background: color }}
                 onClick={() => setMainColor(color)}
               >
-                {' '}
                 {mainColor === color ? (
                   <FaCheck className='color_icon' />
                 ) : null}
@@ -29,8 +53,14 @@ const AddToCart = ({ product }) => {
             )
           })}
         </div>
-        <AmountBtns stock={stock} />
-        <Link to='/' className='link'>
+        <AmountBtns amount={amount} increase={increase} decrease={decrease} />
+        <Link
+          to='/cart'
+          className='link'
+          onClick={() =>
+            dispatch(addToCart({ id, mainColor, amount, product }))
+          }
+        >
           add to cart
         </Link>
       </section>

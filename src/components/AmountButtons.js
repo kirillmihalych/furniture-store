@@ -1,29 +1,7 @@
-import React, { useState } from 'react'
 import { FaMinus, FaPlus } from '../assets/icons'
 import styled from 'styled-components'
 
-const AmountBtns = ({ stock }) => {
-  const [amount, setAmount] = useState(1)
-  const increase = () => {
-    setAmount((oldValue) => {
-      let newValue = oldValue + 1
-      if (newValue > stock) {
-        newValue = stock
-      }
-      return newValue
-    })
-  }
-
-  const decrease = () => {
-    setAmount((oldValue) => {
-      let newValue = oldValue - 1
-      if (newValue < 1) {
-        newValue = 1
-      }
-      return newValue
-    })
-  }
-
+const AmountBtns = ({ amount, increase, decrease }) => {
   return (
     <Wrapper>
       <section className='btn-container'>
