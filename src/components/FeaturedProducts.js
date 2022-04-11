@@ -33,6 +33,9 @@ const FeaturedProducts = () => {
 }
 
 const Wrapper = styled.div`
+  width: 85vw;
+  max-width: 1170px;
+  margin: 0 auto;
   .btn-featured-products {
     font-size: 2rem;
     text-align: center;
@@ -57,16 +60,19 @@ const Wrapper = styled.div`
     text-align: center;
   }
   .featured-img {
-    width: 350px;
+    width: 100%;
     height: 250px;
     object-fit: cover;
     border: 2px solid var(--denim);
   }
   .products-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    /* display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem; */
   }
   .products-wrapper article {
     margin: 1rem 1rem;

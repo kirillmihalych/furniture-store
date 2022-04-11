@@ -1,7 +1,12 @@
 import styled from 'styled-components'
-import { ProductList, Filters, Sort } from '../components'
+import { ProductList, Filters, Sort, LoadingSpinner } from '../components'
+import { useSelector } from 'react-redux'
 
 const Products = () => {
+  const { isLoading } = useSelector((state) => state.product)
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
   return (
     <Wrapper className='section-center'>
       <section className='products-page'>

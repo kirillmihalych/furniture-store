@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleProduct } from '../features/productSlice'
 import { single_product_url } from '../utils/constants'
-import { Stars, AddToCart } from '../components'
+import { Stars, AddToCart, LoadingSpinner } from '../components'
 
 const SingleProduct = () => {
-  const { single_product } = useSelector((state) => state.product)
+  const { single_product, isLoading } = useSelector((state) => state.product)
   const { name, img, price, desc, company, category, stars, reviews, stock } =
     single_product
   const dispatch = useDispatch()
@@ -16,6 +16,11 @@ const SingleProduct = () => {
   useEffect(() => {
     dispatch(getSingleProduct(`${single_product_url}${id}`))
   }, [id])
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
+
   return (
     <Wrapper className='center section-center'>
       <section className='single-page-wrapper'>
