@@ -1,6 +1,7 @@
 import Footer from './Footer'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
+import ButtonsContainer from './ButtonsContainer'
 import FeaturedProducts from './FeaturedProducts'
 import Services from './Services'
 import NewsForm from './NewsForm'
@@ -22,6 +23,7 @@ export {
   Footer,
   Navbar,
   Sidebar,
+  ButtonsContainer,
   FeaturedProducts,
   Services,
   NewsForm,

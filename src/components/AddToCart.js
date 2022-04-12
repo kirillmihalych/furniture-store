@@ -37,7 +37,7 @@ const AddToCart = ({ product }) => {
     <Wrapper>
       <section className='add-to-cart'>
         <div className='colors'>
-          <h3 className='colors-title'>colors:</h3>
+          <h4 className='colors-title'>colors:</h4>
           {colors.map((color, index) => {
             return (
               <span
@@ -69,22 +69,23 @@ const AddToCart = ({ product }) => {
 }
 
 const Wrapper = styled.div`
+  margin-bottom: 5rem;
   .link {
     color: var(--black);
     background: var(--white);
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 0.25rem 0.5rem;
     text-transform: capitalize;
     border: 3px solid var(--black);
   }
   .link:hover {
     transition: var(--transition);
-
-    background: var(--darkGrey);
+    background: var(--black);
+    color: var(--white);
   }
   .add-to-cart {
     display: grid;
-    place-items: center;
+    place-items: start;
     gap: 2rem;
   }
   .colors-title {
@@ -93,12 +94,13 @@ const Wrapper = styled.div`
   .colors {
     margin-top: 1rem;
     display: flex;
+    align-items: center;
   }
   .color {
     position: relative;
     cursor: pointer;
     display: inline-block;
-    border: 2px solid black;
+    border: 3px solid black;
     margin-right: 0.5rem;
     width: 25px;
     height: 25px;

@@ -13,10 +13,9 @@ const Navbar = () => {
     <Wrapper>
       <nav>
         <div className='nav-title'>
-          <h2>
+          <h3>
             <Link to='/'>furniture</Link>
-          </h2>
-
+          </h3>
           <button
             className='toggle-btn'
             onClick={() => {
@@ -29,8 +28,8 @@ const Navbar = () => {
         <div className='nav-links'>
           {links.map(({ id, url, name }) => {
             return (
-              <Link to={url} key={id}>
-                {name}
+              <Link to={url} key={id} className='nav-single-link'>
+                <h4>{name}</h4>
               </Link>
             )
           })}
@@ -42,7 +41,7 @@ const Navbar = () => {
 }
 
 const Wrapper = styled.div`
-  height: 5rem;
+  height: 4rem;
   background: var(--notExatclyWhite);
   display: flex;
   justify-content: center;
@@ -52,21 +51,35 @@ const Wrapper = styled.div`
     color: var(--noxExactlyBlack);
   }
   .toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     background: none;
     border: none;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    padding: 0.25rem;
     display: flex;
     align-items: center;
   }
   .toggle-btn:hover {
     transition: var(--transiton);
-    color: var(--darkGrey);
+    background: lightgrey;
+    border-radius: 5px;
   }
   .nav-links {
     display: none;
+    text-transform: capitalize;
+    font-weight: bold;
   }
-  .btn-container {
+  .nav-single-link {
+    border-bottom: 3px solid transparent;
+  }
+  .nav-single-link:hover {
+    transition: var(--transiton);
+    border-bottom: 3px solid var(--black);
+  }
+  .btns-container {
     display: none;
   }
   nav {
@@ -77,8 +90,14 @@ const Wrapper = styled.div`
   .nav-title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    h3 {
+      background: var(--black);
+      color: var(--white);
+      padding: 0.25rem 0.5rem;
+    }
   }
-  @media screen and (min-width: 982px) {
+  @media screen and (min-width: 772px) {
     .toggle-btn {
       display: none;
     }
@@ -92,12 +111,8 @@ const Wrapper = styled.div`
       font-size: 1.25rem;
       color: var(--noxExactlyBlack);
     }
-    .nav-links a:hover {
-      transition: var(--transiton);
-      color: var(--denim);
-    }
-    .btn-container {
-      display: block;
+    .btns-container {
+      display: flex;
     }
     nav {
       display: grid;

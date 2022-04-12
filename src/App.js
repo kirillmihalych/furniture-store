@@ -3,7 +3,15 @@ import { useDispatch } from 'react-redux'
 import { getProducts } from './features/productSlice'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navbar, Footer, Sidebar } from './components'
-import { Home, About, Error, Products, SingleProduct, Cart } from './pages'
+import {
+  Home,
+  About,
+  Error,
+  Products,
+  SingleProduct,
+  Cart,
+  Checkout,
+} from './pages'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -24,6 +32,7 @@ const App = () => {
           <Route path='products/:id' element={<SingleProduct />} />
           <Route path='cart' element={<Cart />} />
           <Route path='*' element={<Error />} />
+          <Route path='checkout' element={<Checkout />} />
         </Routes>
       </main>
       <Footer />

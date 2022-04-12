@@ -1,25 +1,41 @@
 import styled from 'styled-components'
-import { FaUserAlt, FaShoppingCart } from '../assets/icons'
+import { FaShoppingCart } from '../assets/icons'
 import { Link } from 'react-router-dom'
 
 const ButtonsContainer = () => {
   return (
-    <Wrapper>
-      <Link to='cart'>
-        <h4>cart</h4>
-        <FaShoppingCart />
-      </Link>
-      <Link to='login'>
-        <h4>login</h4>
-        <FaUserAlt />
-      </Link>
+    <Wrapper className='btns-container'>
+      <div className='container'>
+        <Link to='cart'>
+          <h4>cart</h4>
+          <FaShoppingCart />
+        </Link>
+      </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
+  @media screen and (min-width: 772px) {
+    display: flex;
+    align-items: center;
+  }
+  .container {
+    background: transparent;
+    padding: 0.2rem 0.35rem;
+    border: 2px solid var(--black);
+    border-radius: 5px;
+    margin-left: 1rem;
+  }
+  .container:hover {
+    background: var(--black);
+    h4,
+    a {
+      transition: all 0.15s linear;
+      color: var(--white);
+    }
+  }
+
   a {
     color: var(--notExactlyBlack);
     cursor: pointer;
@@ -29,23 +45,13 @@ const Wrapper = styled.div`
     padding: 0.1rem 0.2rem;
     background: transparent;
     border: none;
-    margin-left: 1rem;
-  }
-  h4:hover,
-  button:hover {
-    transition: var(--transition);
-    color: var(--denim);
   }
   h4 {
     margin-right: 10px;
-    font-size: 1.4rem;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
   svg {
     font-size: 1.3rem;
-  }
-  @media screen and (max-width: 992px) {
-    display: none;
   }
 `
 

@@ -18,25 +18,21 @@ const Stars = ({ stars, reviews }) => {
   })
   return (
     <Wrapper>
-      <h3 className='stars-title'>Product ratings</h3>
       <div className='rating'>
         <div className='stars'>{currentStars}</div>
-        <p>{reviews} customer reviews</p>
+        <div>{reviews} customer reviews</div>
       </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  .stars-title {
-    margin-top: 1rem;
-  }
+  margin-bottom: 0.75rem;
   .rating {
     display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
+    align-items: center;
+    gap: 3rem;
   }
-
   svg {
     font-size: 1.5rem;
     color: #ffd700;

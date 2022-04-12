@@ -2,12 +2,13 @@ import styled from 'styled-components'
 
 const NewsForm = () => {
   return (
-    <Wrapper className='section-center'>
-      <form>
+    <Wrapper>
+      <form className='section-center'>
         <h2 className='form-title'>
-          Join our newsletters
+          Join our newsletter
           <br />
-          and get 20% sale right now
+          and <br />
+          <span>get 20% off</span>
         </h2>
         <div className='input-wrapper'>
           <input type='email' placeholder='enter your e-mail' />
@@ -19,18 +20,31 @@ const NewsForm = () => {
 }
 
 const Wrapper = styled.div`
+  background: lightgray;
+  margin-top: 5rem;
+  padding: 10rem 0;
   .form-title {
-    line-height: 2rem;
+    font-style: italic;
+    margin-bottom: 4rem;
+    line-height: 3rem;
     text-align: center;
+    span {
+      display: inline-block;
+      background: black;
+      padding: 0 1rem;
+      color: var(--white);
+      margin-top: 0.5rem;
+      border: 3px solid var(--white);
+    }
   }
   .input-wrapper {
     text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 15rem;
   }
   .input-wrapper input {
-    background: transparent;
-    border: 2px solid var(--darkGrey);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: var(--white);
+    border: 3px solid var(--black);
     padding: 1rem 2rem;
     font-size: 1.5rem;
   }
@@ -42,19 +56,22 @@ const Wrapper = styled.div`
     outline: none;
   }
   .input-wrapper button {
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
     background: transparent;
-    border: 2px solid var(--darkGrey);
+    border: 3px solid var(--black);
     border-left: none;
     padding: 1rem 2rem;
     font-size: 1.5rem;
-    background: var(--darkRed);
+    background: #eebc1d;
+    color: var(--black);
+    letter-spacing: var(--spacing);
     text-transform: uppercase;
   }
   .input-wrapper button:hover {
-    cursor: pointer;
     transition: var(--transition);
-    color: var(--white);
-    /* background: var(--red); */
+    background: #ffd700;
   }
 `
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { format_price } from '../utils/constants'
 
 const Product = ({ img, name, price, id }) => {
   return (
@@ -10,7 +11,7 @@ const Product = ({ img, name, price, id }) => {
         </Link>
         <div className='flex-wrapper'>
           <h4>{name}</h4>
-          <h4>{price}$</h4>
+          <h4>{format_price(price)}</h4>
         </div>
       </article>
     </Wrapper>
@@ -20,7 +21,6 @@ const Product = ({ img, name, price, id }) => {
 const Wrapper = styled.div`
   .flex-wrapper {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     flex-direction: column;
     gap: 1rem;

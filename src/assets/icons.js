@@ -10,6 +10,7 @@ import {
   FaMinus,
   FaCheck,
   FaTrash,
+  FaHotjar,
 } from 'react-icons/fa'
 import {
   BsStarFill,
@@ -18,6 +19,7 @@ import {
   BsGridFill,
   BsList,
 } from 'react-icons/bs'
+import { MdClose } from 'react-icons/md'
 
 export {
   FaUserAlt,
@@ -36,4 +38,6 @@ export {
   BsGridFill,
   BsList,
   FaTrash,
+  MdClose,
+  FaHotjar,
 }

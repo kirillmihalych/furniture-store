@@ -3,14 +3,14 @@ import { FaMap, FaHammer, FaChair } from '../assets/icons'
 
 const Services = () => {
   return (
-    <Wrapper className='section-center'>
-      <section>
+    <Wrapper>
+      <section className='section-center'>
         {/* title */}
 
         <h2 className='services-title'>
           Custom furniture
           <br />
-          built only for you
+          <span>built only for you!</span>
         </h2>
         {/* services */}
 
@@ -52,27 +52,31 @@ const Services = () => {
 }
 
 const Wrapper = styled.div`
+  background: var(--notExactlyWhite);
+  margin-top: 7rem;
   .services {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
-    margin-bottom: 15rem;
   }
   .single-service {
-    background: var(--darkGrey);
-    border: 2px solid var(--notExactlyBlack);
+    background: var(--white);
+    border: 3px solid var(--notExactlyBlack);
     display: grid;
     place-items: center;
     gap: 1rem;
     padding: 1rem 2rem;
+    box-shadow: var(--shadow);
   }
   .single-service p {
     text-align: center;
   }
   .services-title {
-    margin: 3rem 0;
+    margin-bottom: 3rem;
+    color: var(--black);
     text-align: center;
-    line-height: 2rem;
+    line-height: 3rem;
+    font-style: italic;
   }
   svg {
     font-size: 1.75rem;

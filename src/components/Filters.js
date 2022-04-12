@@ -7,6 +7,7 @@ import {
 } from '../features/filterSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { FaCheck } from '../assets/icons'
+import { format_price } from '../utils/constants'
 
 const Filters = () => {
   const dispatch = useDispatch()
@@ -130,7 +131,7 @@ const Filters = () => {
       {/* end of colors */}
       {/* price */}
       <div>
-        <h4 className='filters-title'>{price}$</h4>
+        <h4 className='filters-title'>{format_price(price)}</h4>
         <form>
           <input
             name='price'

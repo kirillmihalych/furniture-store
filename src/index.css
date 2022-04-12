@@ -5,9 +5,8 @@ Variables
 */
 
 :root {
-  /* blue color */
-  --blueColor: #0aa0e3;
   /* basic colors */
+  --blueColor: #0aa0e3;
   --denim: #151e3d;
   --green: #03ac13;
   --red: #ff0000;
@@ -33,7 +32,7 @@ Basic styles
 ==================
 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
 *,
 ::after,
 ::before {
@@ -67,7 +66,6 @@ h4 {
   letter-spacing: 0.1rem;
   text-transform: capitalize;
   line-height: 1.25rem;
-  /* margin-bottom: 0.75rem; */
 }
 
 h1 {
@@ -121,7 +119,3 @@ p {
 .center {
   min-height: calc(100vh - 10rem);
 }
-
-/* .back-image {
-  background-image: url('./assets/img.jpg');
-} */

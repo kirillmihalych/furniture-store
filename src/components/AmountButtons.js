@@ -32,16 +32,18 @@ const Wrapper = styled.div`
     cursor: pointer;
     background: var(--notExactlyWhite);
     color: var(--notExactlyBlack);
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     border: 3px solid var(--notExactlyBlack);
     padding: 0.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+  .btn-count:hover {
+    background: var(--black);
+    color: var(--white);
+  }
   .btn-count:active {
-    transition: var(--transition);
-    scale: 0.9;
   }
 `
 

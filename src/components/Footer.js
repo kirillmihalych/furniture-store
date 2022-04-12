@@ -1,25 +1,21 @@
 import styled from 'styled-components'
-import { FaGithub } from '../assets/icons'
 
 const Footer = () => {
   return (
     <Wrapper>
       <footer>
-        <p>
-          Made by<span> KIRILL F.</span>
-          <a href='https://github.com/Fen1xex'>
-            <FaGithub />
-          </a>
-        </p>
+        <h4>
+          &copy; all rights reserved
+          <span>{new Date().getFullYear()}</span>
+        </h4>
       </footer>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  height: 5rem;
-  background: var(--notExactlyWhite);
-  border-top: 2px solid var(--notExactlyBlack);
+  height: 4rem;
+  background: var(--notExactlyBlack);
   display: grid;
   place-items: center;
   font-size: 1.5rem;
@@ -32,9 +28,8 @@ const Wrapper = styled.div`
     font-size: 1.75rem;
     color: var(--black);
   }
-  p {
-    display: flex;
-    align-items: center;
+  h4 {
+    color: var(--white);
   }
   span {
     margin-left: 0.5rem;
