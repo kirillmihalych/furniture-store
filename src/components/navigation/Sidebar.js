@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { links } from '../utils/constants'
-import { MdClose } from '../assets/icons'
+import { links } from '../../utils/constants'
+import { ButtonsContainer } from '../index'
+import { MdClose } from '../../assets/icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { closeSidebar } from '../features/productSlice'
-import { ButtonsContainer } from '../components'
+import { closeSidebar } from '../../features/productSlice'
 
 const Sidebar = () => {
   const dispatch = useDispatch()
@@ -34,7 +34,6 @@ const Sidebar = () => {
             )
           })}
         </div>
-        <hr />
         <ButtonsContainer className='btns-container' />
       </aside>
     </Wrapper>
@@ -116,7 +115,6 @@ const Wrapper = styled.div`
     align-items: center;
     width: 85vw;
     margin: 0 auto;
-    margin-top: 5rem;
   }
 `
 

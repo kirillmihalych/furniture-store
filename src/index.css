@@ -119,3 +119,14 @@ p {
 .center {
   min-height: calc(100vh - 10rem);
 }
+
+/* 
+Search error
+*/
+
+.error-search {
+  margin-top: 5rem;
+  text-align: center;
+  line-height: 2.75rem;
+  letter-spacing: var(--spacing);
+}

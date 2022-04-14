@@ -24,6 +24,7 @@ export const productSlice = createSlice({
     single_product: {},
   },
   reducers: {
+    // sidebar toggle
     openSidebar: (state) => {
       state.isSidebarOpen = true
     },

@@ -1,19 +1,22 @@
 import styled from 'styled-components'
-import это_мне_надо2 from '../assets/это_мне_надо2.jpg'
+import это_мне_надо2 from '../assets/images/это_мне_надо2.jpg'
 import { Link } from 'react-router-dom'
 
 const About = () => {
   return (
     <Wrapper>
-      <div className='flex-wrapper center'>
+      <div className='flex-wrapper center section-center'>
         <img src={это_мне_надо2} alt='img-about' />
+        <h3 className='about-title'>Our story</h3>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi
-          aperiam aliquam laboriosam doloremque quaerat amet eaque laudantium,
-          dolorum non architecto blanditiis eligendi pariatur harum repudiandae
-          eius! Quod doloremque nesciunt similique!
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt,
+          fugit suscipit. Dignissimos provident veritatis qui. Dolores incidunt
+          sunt repellat autem dignissimos ipsa nihil a aliquid? Optio harum
+          sapiente rerum quae quos beatae, dolorum, soluta voluptatibus,
+          pariatur odit veniam rem provident aut? Qui labore enim animi corrupti
+          ipsum excepturi obcaecati ratione!
         </p>
-        <h3>
+        <h3 className='about-link'>
           <Link to='products'>start shopping</Link>
         </h3>
       </div>
@@ -29,19 +32,22 @@ const Wrapper = styled.div`
     align-items: center;
     flex-direction: column;
   }
+  .about-title {
+    margin-top: 1rem;
+    font-style: italic;
+  }
   img {
     width: 75%;
     height: 75%;
     object-fit: cover;
-    border: 5px solid var(--denim);
-    border-radius: 10px;
+    border: 3px solid var(--black);
   }
   p {
     letter-spacing: var(--spacing);
     margin-top: 1rem;
     text-align: center;
   }
-  h3 {
+  .about-link {
     border: 2px solid var(--notExactlyBlack);
     margin-top: 2rem;
     padding: 1rem 2rem;
@@ -49,7 +55,8 @@ const Wrapper = styled.div`
   a {
     color: var(--notExactlyBlack);
   }
-  h3:hover {
+  .about-link:hover {
+    cursor: pointer;
     background-color: var(--notExactlyBlack);
     transition: var(--transition);
     a {

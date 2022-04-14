@@ -73,6 +73,14 @@ const Wrapper = styled.div`
     transition: var(--transition);
     background: #ffd700;
   }
+  @media (max-width: 600px) {
+    .input-wrapper button {
+      margin-top: 1rem;
+      border-left: 3px solid var(--black);
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+  }
 `
 
 export default NewsForm

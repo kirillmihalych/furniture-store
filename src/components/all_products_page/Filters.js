@@ -1,19 +1,22 @@
-import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import {
-  setFilter,
-  filterProducts,
-  clearFilters,
-} from '../features/filterSlice'
+import { setFilter, clearFilters } from '../../features/filterSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import { FaCheck } from '../assets/icons'
-import { format_price } from '../utils/constants'
+import { FaCheck } from '../../assets/icons'
+import { format_price, getUniqueValues } from '../../utils/helpers'
 
 const Filters = () => {
   const dispatch = useDispatch()
   const { all_products, filters } = useSelector((state) => state.filter)
-  const { text, category, colors, company, min_price, max_price, price } =
-    filters
+  const {
+    text,
+    category,
+    colors,
+    company,
+    min_price,
+    max_price,
+    price,
+    shipping,
+  } = filters
 
   const updateFilters = (e) => {
     let name = e.target.name
@@ -27,19 +30,10 @@ const Filters = () => {
     if (name === 'colors') {
       value = e.target.dataset.color
     }
-    dispatch(setFilter({ name, value }))
-  }
-
-  useEffect(() => {
-    dispatch(filterProducts())
-  }, [filters])
-
-  const getUniqueValues = (items, name) => {
-    let unique = items.map((item) => item[name])
-    if (name === 'colors') {
-      unique = unique.flat()
+    if (name === 'shipping') {
+      value = e.target.checked
     }
-    return ['all', ...new Set(unique)]
+    dispatch(setFilter({ name, value }))
   }
 
   const uniqueColors = getUniqueValues(all_products, 'colors')
@@ -56,6 +50,7 @@ const Filters = () => {
           placeholder='search'
           value={text}
           onChange={updateFilters}
+          className='search-input'
         />
       </form>
       {/* end of search */}
@@ -103,7 +98,6 @@ const Filters = () => {
                 <button
                   name='colors'
                   key={index}
-                  // style={{ background: color }}
                   data-color='all'
                   className='all-btn'
                   onClick={updateFilters}
@@ -131,7 +125,8 @@ const Filters = () => {
       {/* end of colors */}
       {/* price */}
       <div>
-        <h4 className='filters-title'>{format_price(price)}</h4>
+        <h4 className='filters-title'>Price range</h4>
+        <h4 className='filters-title title-price'>{format_price(price)}</h4>
         <form>
           <input
             name='price'
@@ -140,25 +135,61 @@ const Filters = () => {
             max={max_price}
             value={price}
             onChange={updateFilters}
+            className='range-input'
           />
         </form>
       </div>
       {/* end of price */}
-      <button onClick={() => dispatch(clearFilters())}>clear filters</button>
+      {/* shipping */}
+      <div>
+        <h4 className='filters-title'>Shipping</h4>
+        <form>
+          <input
+            name='shipping'
+            type='checkbox'
+            onChange={updateFilters}
+            checked={shipping}
+          />
+        </form>
+      </div>
+      {/* end of shipping */}
+      <button
+        onClick={() => dispatch(clearFilters())}
+        className='clear-filter-btn'
+      >
+        clear filters
+      </button>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
+  //search
+  .search-input {
+    font-size: 1rem;
+    background: var(--white);
+    border: 3px solid var(--darkGrey);
+    border-radius: 5px;
+    font-style: italic;
+    padding: 0.1rem 0.2rem;
+  }
+  .search-input::placeholder {
+    font-style: italic;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+  }
+  .search-input:focus {
+    outline: none;
+  }
   //categories
   .categories {
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
   }
-
   .btn {
+    text-transform: capitalize;
+    text-align: start;
     cursor: pointer;
     background: transparent;
     border: 2px solid var(--black);
@@ -171,6 +202,10 @@ const Wrapper = styled.div`
   }
   .filters-title {
     margin: 1rem 0;
+    background: black;
+    padding: 0.2rem 0.4rem;
+    font-style: italic;
+    color: #eebc1d;
   }
   .active {
     background: var(--darkGrey);
@@ -192,7 +227,8 @@ const Wrapper = styled.div`
   .all-btn {
     cursor: pointer;
     background: transparent;
-    border-radius: 10px;
+    /* border-radius: 10px; */
+    text-transform: capitalize;
     border: 2px solid black;
     width: 25px;
     height: 25px;
@@ -209,7 +245,38 @@ const Wrapper = styled.div`
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+  }
+  //price
+  .range-input {
+    -webkit-appearance: none;
+    width: 100%;
+    background: var(--darkGrey);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .title-price {
+    background: #eebc1d;
+    color: black;
+    border: 3px solid var(--black);
+  }
+  //clear filters btn
+  .clear-filter-btn {
+    cursor: pointer;
+    font-size: 1rem;
+    background: white;
+    border: 3px solid var(--black);
+    padding: 0.25rem 0.5rem;
+    width: 100%;
+    display: block;
+    margin-top: 1rem;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    font-weight: bold;
+  }
+  .clear-filter-btn:hover {
+    transition: var(--transition);
+    background: var(--black);
+    color: var(--white);
   }
 `
 

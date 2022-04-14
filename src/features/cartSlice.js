@@ -14,6 +14,7 @@ const initialState = {
   total_items: 0,
   total_amount: 0,
   shipping_fee: 322,
+  isModalShown: false,
 }
 
 export const cartSlice = createSlice({
@@ -51,7 +52,6 @@ export const cartSlice = createSlice({
         }
 
         state.cart = [...state.cart, newProduct]
-        localStorage.setItem('cart', JSON.stringify(state.cart))
       }
     },
     clearCart: (state) => {
@@ -104,6 +104,12 @@ export const cartSlice = createSlice({
       state.total_items = total_items
       state.total_amount = total_amount
     },
+    showModal: (state) => {
+      state.isModalShown = true
+    },
+    closeModal: (state) => {
+      state.isModalShown = false
+    },
   },
 })
 
@@ -113,6 +119,8 @@ export const {
   removeItem,
   toggleAmount,
   countCartTotals,
+  showModal,
+  closeModal,
 } = cartSlice.actions
 
 export default cartSlice.reducer

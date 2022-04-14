@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { showModal } from '../features/cartSlice'
+import { useDispatch } from 'react-redux'
 
 const Checkout = () => {
+  const dispatch = useDispatch()
+
   // first name
   const [firstName, setFirstName] = useState('')
   const [firstNameDirty, setFirstNameDirty] = useState(false)
@@ -94,7 +99,7 @@ const Checkout = () => {
     <Wrapper className='section-center'>
       <section className='section-form'>
         <form onSubmit={handleSubmit} className='form-order'>
-          <h3 className='form-title'>Create order</h3>
+          <h3 className='form-title'>Make an order</h3>
           <div className='input-wrapper'>
             {/* first name */}
             <label name='first-name'>first name</label>
@@ -157,7 +162,17 @@ const Checkout = () => {
             )}
           </div>
           <button type='submit' className='order-btn' disabled={!formValid}>
-            {formValid ? 'order' : 'disabled'}
+            {!formValid ? (
+              'order'
+            ) : (
+              <Link
+                to='/'
+                className='order-link'
+                onClick={() => dispatch(showModal())}
+              >
+                Order
+              </Link>
+            )}
           </button>
         </form>
       </section>
@@ -171,17 +186,17 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 5rem;
-    /* height: 30rem; */
   }
   .form-order {
     width: 400px;
     text-align: center;
-    border: 3px solid var(--darkGrey);
+    border: 3px solid var(--black);
+    background: var(--white);
     box-shadow: var(--shadow);
   }
   .form-title {
-    background: lightgray;
-    border-bottom: 3px solid var(--darkGrey);
+    background: #eebc1d;
+    border-bottom: 3px solid var(--black);
     padding: 2rem 1rem;
     margin-bottom: 1rem;
   }
@@ -231,27 +246,33 @@ const Wrapper = styled.div`
     text-transform: capitalize;
     text-align: start;
   }
-  .order-btn:disabled {
-    background: black;
-  }
+
   .order-btn {
     cursor: pointer;
+    height: 55px;
     width: 350px;
     margin: 0 auto;
     color: var(--white);
     display: block;
     font-size: 1.25rem;
-    text-transform: uppercase;
-    background: lightgreen;
-    border: 2px solid var(--black);
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    background: #eebc1d;
+    border: 3px solid var(--black);
     padding: 0.25rem 0.5rem;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
   }
-  /* .order-btn:hover {
-    cursor: pointer;
+  .order-btn:hover {
     transition: var(--transition);
-    background: lightgreen;
-  } */
+    background: #ffd700;
+  }
+  .order-btn:disabled {
+    background: var(--darkGrey);
+  }
+  .order-link {
+    color: white;
+  }
 `
 
 export default Checkout

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { links } from '../utils/constants'
-import { FaBars } from '../assets/icons'
-import ButtonsContainer from './ButtonsContainer'
+import { links } from '../../utils/constants'
+import { FaBars } from '../../assets/icons'
+import { ButtonsContainer } from '..'
 import { useDispatch } from 'react-redux'
-import { openSidebar } from '../features/productSlice'
+import { openSidebar } from '../../features/productSlice'
 
 const Navbar = () => {
   const dispatch = useDispatch()
@@ -47,8 +47,20 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: var(--shadow);
-  a {
-    color: var(--noxExactlyBlack);
+  nav {
+    min-width: var(--min-width);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .nav-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+      background: var(--black);
+      color: var(--white);
+      padding: 0.25rem 0.5rem;
+    }
   }
   .toggle-btn {
     display: flex;
@@ -79,27 +91,20 @@ const Wrapper = styled.div`
     transition: var(--transiton);
     border-bottom: 3px solid var(--black);
   }
+  a {
+    color: var(--noxExactlyBlack);
+  }
   .btns-container {
     display: none;
-  }
-  nav {
-    min-width: var(--min-width);
-    max-width: var(--max-width);
-    margin: 0 auto;
-  }
-  .nav-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    h3 {
-      background: var(--black);
-      color: var(--white);
-      padding: 0.25rem 0.5rem;
-    }
   }
   @media screen and (min-width: 772px) {
     .toggle-btn {
       display: none;
+    }
+    nav {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      place-items: center;
     }
     .nav-links {
       display: flex;
@@ -113,11 +118,6 @@ const Wrapper = styled.div`
     }
     .btns-container {
       display: flex;
-    }
-    nav {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      place-items: center;
     }
   }
 `

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { GridView, ListView } from '../components'
+import { GridView, ListView } from '..'
 import {
   setProducts,
   sortProducts,
   filterProducts,
-} from '../features/filterSlice'
+} from '../../features/filterSlice'
 
 const ProductList = () => {
   const dispatch = useDispatch()
@@ -16,17 +16,14 @@ const ProductList = () => {
     (state) => state.filter
   )
 
-  useEffect(() => {
-    dispatch(setProducts(products))
-  }, [products])
-
-  useEffect(() => {
-    dispatch(filterProducts())
-    dispatch(sortProducts())
-  }, [products, sort, filters])
-
   if (filtered_products.length < 1) {
-    return <h2>Error</h2>
+    return (
+      <h3 className='error-search'>
+        Sorry!
+        <br /> There is no matches.
+        <br /> Try again please!
+      </h3>
+    )
   }
 
   return (

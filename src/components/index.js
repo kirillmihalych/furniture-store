@@ -1,23 +1,37 @@
-import Footer from './Footer'
-import Navbar from './Navbar'
-import Sidebar from './Sidebar'
-import ButtonsContainer from './ButtonsContainer'
-import FeaturedProducts from './FeaturedProducts'
-import Services from './Services'
-import NewsForm from './NewsForm'
+// navigation imports
+import Footer from './navigation/Footer'
+import Navbar from './navigation/Navbar'
+import Sidebar from './navigation/Sidebar'
+import ButtonsContainer from './navigation/ButtonsContainer'
+// end of navigation imports
+
+// home_page imports
+import HomeHero from './home_page/HomeHero'
+import FeaturedProducts from './home_page/FeaturedProducts'
+import Services from './home_page/Services'
+import NewsForm from './home_page/NewsForm'
+// end of home page imports
+
+// cart_page imports
+import CartColumns from './cart_page/CartColumns'
+import CartItem from './cart_page/CartItem'
+import CartTotals from './cart_page/CartTotals'
+import AddToCart from './cart_page/AddToCart'
+// end of cart_page imports
+
+// all_products_page imports
+import Sort from './all_products_page/Sort'
+import Filters from './all_products_page/Filters'
+import ProductList from './all_products_page/ProductList'
+import GridView from './all_products_page/GridView'
+import ListView from './all_products_page/ListView'
+import Product from './all_products_page/Product'
+// end of all_products_page imports
+
 import Stars from './Stars'
-import AddToCart from './AddToCart'
 import AmountBtns from './AmountButtons'
-import ProductList from './ProductList'
-import Product from './Product'
-import GridView from './GridView'
-import Filters from './Filters'
-import ListView from './ListView'
-import Sort from './Sort'
-import CartColumns from './CartColumns'
 import LoadingSpinner from './LoadingSpinner'
-import CartItem from './CartItem'
-import CartTotals from './CartTotals'
+import ShowOrder from './ShowOrder'
 
 export {
   Footer,
@@ -40,4 +54,6 @@ export {
   CartColumns,
   CartItem,
   CartTotals,
+  ShowOrder,
+  HomeHero,
 }

@@ -3,14 +3,15 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleProduct } from '../features/productSlice'
-import { single_product_url } from '../utils/constants'
 import { Stars, AddToCart, LoadingSpinner } from '../components'
-import { format_price } from '../utils/constants'
+import { format_price } from '../utils/helpers'
+import { single_product_url } from '../utils/constants'
 
 const SingleProduct = () => {
   const { single_product, isLoading } = useSelector((state) => state.product)
-  const { name, img, price, desc, company, category, stars, reviews, stock } =
+  const { name, img, price, desc, company, stars, reviews, stock } =
     single_product
+
   const dispatch = useDispatch()
   const { id } = useParams()
 
@@ -41,7 +42,6 @@ const SingleProduct = () => {
             <span>Available : </span>
             {stock > 0 ? 'In stock' : 'out of stock'}
           </p>
-
           <hr />
           {stock > 0 ? (
             <AddToCart product={single_product} />
@@ -61,22 +61,13 @@ const Wrapper = styled.div`
   place-items: center;
   .title-name {
     margin-bottom: 0.65rem;
+    font-style: italic;
   }
   .price {
     display: inline-block;
     color: #ffd700;
     background: black;
     padding: 0.1rem 0.2rem;
-  }
-  .single-page-wrapper {
-    display: grid;
-    gap: 2rem;
-  }
-  img {
-    width: 100%;
-    height: 550px;
-    object-fit: cover;
-    border: 2px solid var(--denim);
   }
   .desc {
     letter-spacing: var(--spacing);
@@ -90,6 +81,13 @@ const Wrapper = styled.div`
     span {
       font-weight: 700;
     }
+  }
+  img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    border: 3px solid var(--black);
+    margin-bottom: 2rem;
   }
 
   @media screen and (max-width: 977px) {
@@ -106,13 +104,8 @@ const Wrapper = styled.div`
       height: 550px;
       object-fit: cover;
       border: 3px solid var(--black);
+      margin-bottom: 0;
     }
-    /* .info {
-      display: grid;
-      place-items: center;
-      gap: 1rem;
-      margin-bottom: 5rem;
-    } */
   }
 `
 

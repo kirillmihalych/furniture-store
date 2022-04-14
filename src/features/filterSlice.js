@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import { useDispatch, useSelector } from 'react-redux'
 
 export const filterSlice = createSlice({
   name: 'filter',
@@ -7,7 +6,7 @@ export const filterSlice = createSlice({
     gridView: true,
     all_products: [],
     filtered_products: [],
-    sort: 'lowest',
+    sort: 'heighest',
     filters: {
       text: '',
       price: 0,
@@ -16,6 +15,7 @@ export const filterSlice = createSlice({
       category: 'all',
       colors: 'all',
       company: 'all',
+      shipping: false,
     },
   },
   reducers: {
@@ -67,16 +67,15 @@ export const filterSlice = createSlice({
     // filters functional
     setFilter: (state, action) => {
       const { name, value } = action.payload
-      console.log(name, value)
       state.filters[name] = value
     },
-    filterProducts: (state, action) => {
+    filterProducts: (state) => {
       let tempProducts = [...state.all_products]
-      const { text, category, colors, company, price } = state.filters
+      const { text, category, colors, company, price, shipping } = state.filters
       //search
       if (text) {
         tempProducts = tempProducts.filter((product) => {
-          return product.name.toLowerCase().startsWith(text)
+          return product.name.toLowerCase().startsWith(text.toLowerCase())
         })
       }
       //categories
@@ -96,6 +95,12 @@ export const filterSlice = createSlice({
         tempProducts = tempProducts.filter((product) => {
           return product.colors.find((color) => color === colors)
         })
+      }
+      // shipping
+      if (shipping) {
+        tempProducts = tempProducts.filter(
+          (product) => product.shipping === true
+        )
       }
       // price
       tempProducts = tempProducts.filter((product) => product.price <= price)

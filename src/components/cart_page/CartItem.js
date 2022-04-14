@@ -1,11 +1,13 @@
 import styled from 'styled-components'
-import { FaTrash } from '../assets/icons'
-import { AmountBtns } from '../components'
-import { removeItem, toggleAmount } from '../features/cartSlice'
+import { FaTrash } from '../../assets/icons'
+import { AmountBtns } from '../../components'
+import { format_price } from '../../utils/helpers'
+import { removeItem, toggleAmount } from '../../features/cartSlice'
 import { useDispatch } from 'react-redux'
 
 const CartItem = ({ id, img, name, color, price, amount }) => {
   const dispatch = useDispatch()
+
   let value
   const increase = () => {
     value = 'inc'
@@ -25,7 +27,7 @@ const CartItem = ({ id, img, name, color, price, amount }) => {
           <p className='color'>
             color: <span style={{ background: color }}></span>
           </p>
-          <h5 className='price-small'>{price / 100}$</h5>
+          <h5 className='price-small'>{format_price(price)}</h5>
         </div>
       </div>
       <h5 className='price'>{price / 100}$</h5>
@@ -39,19 +41,18 @@ const CartItem = ({ id, img, name, color, price, amount }) => {
 }
 
 const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 200px auto auto;
+  grid-template-rows: 75px;
+  gap: 3rem 1rem;
+  place-items: center;
+  margin-bottom: 3rem;
   .subtotal {
     display: none;
   }
   .price {
     display: none;
   }
-  display: grid;
-  grid-template-columns: 200px auto auto;
-  grid-template-rows: 75px;
-  gap: 3rem 1rem;
-
-  place-items: center;
-  margin-bottom: 3rem;
   .title {
     height: 100%;
     display: grid;
@@ -122,6 +123,9 @@ const Wrapper = styled.div`
     color: lightpink;
   }
   @media (min-width: 776px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    align-items: center;
+    grid-template-rows: 75px;
     .subtotal {
       display: block;
       margin-bottom: 0;
@@ -148,9 +152,6 @@ const Wrapper = styled.div`
         height: 0.75rem;
       }
     }
-    grid-template-columns: 1fr 1fr 1fr 1fr auto;
-    align-items: center;
-    grid-template-rows: 75px;
     img {
       height: 100%;
     }

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { FaCheck } from '../assets/icons'
-import AmountBtns from './AmountButtons'
+import { FaCheck } from '../../assets/icons'
+import AmountBtns from '../AmountButtons'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../features/cartSlice'
+import { addToCart } from '../../features/cartSlice'
 
 const AddToCart = ({ product }) => {
   const dispatch = useDispatch()

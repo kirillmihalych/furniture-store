@@ -1,6 +1,3 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { getProducts } from './features/productSlice'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navbar, Footer, Sidebar } from './components'
 import {
@@ -14,12 +11,6 @@ import {
 } from './pages'
 
 const App = () => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(getProducts())
-  }, [])
-
   return (
     <BrowserRouter>
       <Navbar />

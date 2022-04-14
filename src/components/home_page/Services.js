@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FaMap, FaHammer, FaChair } from '../assets/icons'
+import { FaMap, FaHammer, FaChair } from '../../assets/icons'
 
 const Services = () => {
   return (

@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { CartColumns, CartItem, CartTotals } from '../components'
 import { useSelector, useDispatch } from 'react-redux'
-import { clearCart, countCartTotals } from '../features/cartSlice'
+import { clearCart } from '../features/cartSlice'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const dispatch = useDispatch()
   const { cart } = useSelector((state) => state.cart)
-
-  useEffect(() => {
-    dispatch(countCartTotals())
-  }, [cart])
 
   return (
     <Wrapper className='section-center'>
@@ -45,26 +41,26 @@ const Wrapper = styled.div`
   }
   .link-btn {
     background: transparent;
-    border: 2px solid var(--darkGrey);
+    border: 3px solid var(--black);
     text-transform: capitalize;
+    background: #eebc1d;
     padding: 0.25rem 0.5rem;
     color: var(--black);
-    border-radius: var(--radius);
     letter-spacing: var(--spacing);
-    font-weight: 400;
+    font-weight: 700;
     cursor: pointer;
   }
   .link-btn:hover {
+    background: #ffd700;
     transition: var(--transition);
-    background: lightgreen;
   }
   .clear-btn {
     font-size: 0.975rem;
-    font-weight: 400;
+    background: var(--darkGrey);
   }
   .clear-btn:hover {
     transition: var(--transition);
-    background: lightpink;
+    background: lightgray;
   }
 `
 

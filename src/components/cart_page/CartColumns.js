@@ -29,7 +29,6 @@ const Wrapper = styled.div`
         font-weight: 400;
       }
     }
-
     span {
       width: 2rem;
       height: 2rem;

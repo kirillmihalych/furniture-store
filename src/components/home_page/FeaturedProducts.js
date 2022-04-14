@@ -1,10 +1,16 @@
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { format_price } from '../utils/constants'
+import { LoadingSpinner } from '../../components/index'
+import { format_price } from '../../utils/helpers'
 
 const FeaturedProducts = () => {
-  const { products } = useSelector((state) => state.product)
+  const { products, isLoading } = useSelector((state) => state.product)
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
+
   return (
     <Wrapper>
       <div className='featured-products'>
@@ -21,7 +27,7 @@ const FeaturedProducts = () => {
                     <img src={img} alt={name} className='featured-img' />
                     <div className='flex-wrapper'>
                       <h4>{name}</h4>
-                      <h4>{format_price(price)}</h4>
+                      <h4 className='product-price'>{format_price(price)}</h4>
                     </div>
                   </Link>
                 </article>
@@ -40,6 +46,21 @@ const FeaturedProducts = () => {
 const Wrapper = styled.div`
   background: lightgrey;
   padding-top: 1rem;
+  .featured-title {
+    font-style: italic;
+    margin-top: 7rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    background: black;
+    color: var(--white);
+    span {
+      background: black;
+      color: var(--white);
+      border: 3px solid var(--white);
+      padding: 0 0.5rem;
+    }
+  }
   .featured-products {
     width: 85vw;
     max-width: 1170px;
@@ -63,28 +84,11 @@ const Wrapper = styled.div`
     background: var(--notExactlyBlack);
     color: var(--notExactlyWhite);
   }
-  .featured-title {
-    font-style: italic;
-    margin-top: 7rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    position: relative;
-    background: black;
-    color: var(--white);
-    span {
-      background: black;
-      color: var(--white);
-      border: 3px solid var(--white);
-      padding: 0 0.5rem;
-    }
-  }
-  .underline {
-    border-bottom: 2px solid black;
-  }
   .featured-img {
     width: 100%;
     height: 250px;
     object-fit: cover;
+    border: 3px solid var(--black);
   }
   .products-wrapper {
     display: grid;
@@ -98,10 +102,19 @@ const Wrapper = styled.div`
     margin-top: 0.5rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    font-style: italic;
   }
   .product {
     box-shadow: var(--shadow);
     padding: 1rem 2rem;
+    background: var(--notExactlyWhite);
+    border-radius: 5px;
+  }
+  .product-price {
+    background: var(--black);
+    color: #ffd700;
+    padding: 0.25rem 0.5rem;
   }
   @media screen and (max-width: 992px) {
     .products-wrapper {

@@ -34,13 +34,13 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   article {
-    border: 1px solid var(--darkGrey);
-    border-radius: var(--radius);
+    border: 3px solid var(--black);
     padding: 1.5rem 3rem;
   }
   h4,
   h5,
   p {
+    font-weight: bold;
     display: grid;
     grid-template-columns: 200px 1fr;
   }
@@ -51,6 +51,9 @@ const Wrapper = styled.div`
   h4 {
     margin-top: 2rem;
   }
+  span {
+    font-weight: lighter;
+  }
   @media (min-width: 776px) {
     justify-content: flex-end;
   }
@@ -59,8 +62,8 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    border: 2px solid var(--darkGrey);
-    border-radius: 10px;
+    border: 3px solid var(--black);
+    background: #eebc1d;
     width: 100%;
     margin-top: 1rem;
     font-weight: 700;
@@ -68,7 +71,7 @@ const Wrapper = styled.div`
   }
   .btn:hover {
     transition: var(--transition);
-    background: lightgreen;
+    background: #ffd700;
   }
 `
 

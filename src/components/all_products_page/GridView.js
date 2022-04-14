@@ -1,4 +1,4 @@
-import { Product } from '../components'
+import { Product } from '../../components'
 import styled from 'styled-components'
 
 const GridView = ({ products }) => {
@@ -20,6 +20,11 @@ const Wrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
+  }
+  @media (max-width: 955px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
   }
 `
 
