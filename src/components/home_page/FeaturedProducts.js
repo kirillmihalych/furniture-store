@@ -14,9 +14,7 @@ const FeaturedProducts = () => {
   return (
     <Wrapper>
       <div className='featured-products'>
-        <h2 className='featured-title'>
-          Featured <span>products</span>
-        </h2>
+        <h2 className='featured-title'>Featured products</h2>
         <section className='products-wrapper'>
           {products
             .map((product) => {
@@ -54,6 +52,7 @@ const Wrapper = styled.div`
     position: relative;
     background: black;
     color: var(--white);
+    line-height: 2.25rem;
     span {
       background: black;
       color: var(--white);

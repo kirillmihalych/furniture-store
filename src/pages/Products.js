@@ -23,6 +23,10 @@ const Products = () => {
 }
 
 const Wrapper = styled.div`
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 5rem auto;
   .products-page {
     display: grid;
