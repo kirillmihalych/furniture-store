@@ -5,7 +5,7 @@
 
 ### You can see the full development process in the list of commits.
 
-Developed online store app that gives users the capability of selecting a product to purchase;  
-sorting and filtering products;  
-viewing purchase information;  
+Developed online store app that gives users the capability of selecting a product to purchase,  
+sorting and filtering products,  
+viewing purchase information,  
 adding it to an online shopping cart; and finally, actually purchasing the products in the shopping cart.
